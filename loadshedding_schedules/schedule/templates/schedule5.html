@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block customhead%}
+
+	<!--LOADING THE GOOGLEMAPS API  -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=drawing"></script>
+        <!--LOADING THE MARKER WITH LABEL LIBRARY -->
+    <script src="{{ STATIC_URL }}/static/markerwithlabel.js" type="text/javascript"></script>
+
+	<!-- LOADING THE MAP OVERLAY DATA -->
+    <script src="{{ STATIC_URL }}/static/map.js" type="text/javascript"> </script>
+
+     <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #map-canvas {
+        margin: 2% 5% 0% 5%;
+      }
+
+   .labels {
+     color: black;
+     background-color: transparent;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+     font-size: 10px;
+     font-weight: bold;
+     text-align: center;
+     width: 40px;     
+     white-space: nowrap;
+   }
+
+    </style> 
+
+   <script type="text/javascript">
+		google.maps.event.addDomListener(window, 'load', function(){initialize({{ stage }}, {{ current|safe }}, {{ next|safe }}, {{ after|safe }});});
+   </script>
+
+{% endblock %}
+
+
+{% block content %}
+	
+<div class="container">
+    <div class="page-header">
+        <h1>Loadshedding schedule display method 5</h1>
+    </div>
+
+<div class="container">  
+<div class="row">
+        <div class="col-md-2 col-sm-2">
+        	<div style="width:30px;height:30px;border:1px solid #FF0000; background:#FF0000;"></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+        	<h4>Areas currently experiencing load-shedding</h4>
+        </div>
+</div>
+<div class="row">
+        <div class="col-md-2 col-sm-2">
+			<div style="width:30px;height:30px;border:1px solid #FF9933; background:#FF9933;"></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+        	<h4>Areas next to experience load-shedding</h4>
+        </div>
+</div>
+<div class="row">
+        <div class="col-md-2 col-sm-2">
+        	<div style="width:30px;height:30px;border:1px solid #FFFF33; background:#FFFF33;"></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+        	<h4>After which load-shedding will be experiened in these areas </h4>
+        </div>
+</div>
+<div class="row">
+        <div class="col-md-2 col-sm-2">
+        	<div style="width:30px;height:30px;border:1px solid #66FF99; background:#66FF99; float:left;"></div>
+   			<div style="width:30px;height:30px;border:1px solid #66CC00; background:#66CC00; float:left;"></div>
+   			<div style="width:30px;height:30px;border:1px solid #33CC66; background:#33CC66; float:left;"></div>
+   			<div style="width:30px;height:30px;border:1px solid #99FF33; background:#99FF33; float:left;"></div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+        	<h4>Areas not set to experience load-shedding within the next 6 hours</h4>
+        </div>
+</div>
+</div>  
+
+</div>
+
+<div id="map-canvas"></div>
+
+{% endblock %}

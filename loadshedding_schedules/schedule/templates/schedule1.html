@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block sched1styles%}
+        <link href="{{ STATIC_URL }}/static/overriding_styles.css" rel="stylesheet"> 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Loadshedding schedule display method 1</h1>
+    </div>
+    <h3 id="header">Cape Town: Areas 1 - 16 monthly loadshedding schedules</h3>
+    <h4>Effective from 1 February 2015 (<a href="#zonekey">Zone Key</a>)</h4>
+
+</div>
+
+<div class="container">
+     <h2>Stage 1</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s1row1">
+            {% for item in headers1 %}
+            <th class = "info" id= "{{ item }}">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info" id = "{{ item }}">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S1schedule %}
+        <tr>
+            {% for cell in item %}
+                <td id = "{{ cell }}">{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="container">
+     <h2>Stage 2</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s2row1">
+            {% for item in headers1 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S2schedule %}
+        <tr>
+            {% for cell in item %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="container">
+     <h2>Stage 3</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s3row1">
+            {% for item in headers1 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S3schedule %}
+        <tr>
+            {% for cell in item %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="container">
+     <h2>Stage 4</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s4row1">
+            {% for item in headers1 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S4schedule %}
+        <tr>
+            {% for cell in item %}
+                <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="container" id="zonekey">
+<div class='row'>
+<div class='col-md-8 col-md-offset-2 text-center'>
+     <h2>Zone Key (<a href="#header">Top</a>)</h2>
+
+    <div class = "table-responsive">
+        <table class='table table-bordered table-striped table-hover text-left'>
+        <tr>
+            <th class="info">Zone</th>
+            <th class="info">Location</th>
+        </tr>
+        <tr>
+            <td>Zone 1</td>
+            <td>Bellville</td>
+        </tr>
+         <tr>
+            <td>Zone 2</td>
+            <td>Maitland, Milnerton</td>
+        </tr>
+         <tr>
+            <td>Zone 3</td>
+            <td>Somerset West, Strand</td>
+        </tr>
+         <tr>
+            <td>Zone 4</td>
+            <td>Mitchells Plain, Philippi</td>
+        </tr>
+         <tr>
+            <td>Zone 5</td>
+            <td>Newlands, Parts of Rondebosch, Ottery, Hanover Park</td>
+        </tr>
+         <tr>
+            <td>Zone 6</td>
+            <td>Durbanville, Tygervalley, Welgemoed</td>
+        </tr>
+         <tr>
+            <td>Zone 7</td>
+            <td>City Bowl, Green Point, Seapoint, Camps Bay</td>
+        </tr>
+         <tr>
+            <td>Zone 8</td>
+            <td>Cape Peninsula, Tokai, Muizenberg</td>
+        </tr>
+         <tr>
+            <td>Zone 9</td>
+            <td>Pinelands, Langa, Epping</td>
+        </tr>
+         <tr>
+            <td>Zone 10</td>
+            <td>Brackenfell, Kuilsriver, Kraaifontein, Vredekloof</td>
+        </tr>
+         <tr>
+            <td>Zone 11</td>
+            <td>Hout Bay, Constantia, Bergvliet, Plumstead, Wynberg, Claremont</td>
+        </tr>
+         <tr>
+            <td>Zone 12</td>
+            <td>Athlone, Manenberg</td>
+        </tr>
+         <tr>
+            <td>Zone 13</td>
+            <td>Deflt, Blue Downs, Goodwood, Parow</td>
+        </tr>
+         <tr>
+            <td>Zone 14</td>
+            <td>Atlantis, Blouberg</td>
+        </tr>
+         <tr>
+            <td>Zone 15</td>
+            <td>Observatory, Rondebosch, Maitland</td>
+        </tr>
+
+         <tr>
+            <td>Zone 16</td>
+            <td>Retreat, Philippi</td>
+        </tr>
+        </table>
+    </div>   
+</div>
+</div>
+</div>
+
+{% endblock %}
+
+
+

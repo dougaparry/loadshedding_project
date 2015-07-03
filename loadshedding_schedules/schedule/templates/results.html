@@ -1,0 +1,315 @@
+{% extends 'schedule4.html' %}
+
+{% block results %}
+<div class="row"></div>
+
+<div class="row"></div>
+
+{% if blank != True %}
+
+<h3>Displaying the load shedding schedule for {{ area }}</h3>
+{% if stage == 0 %}
+<h3>Eskom is currently not implementing any form of load shedding</h3>
+
+{% elif stage == 1 %}
+    <h2>Eskom is currently implementing stage 1 load shedding</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s1row1">
+            {% for item in headers1 %}
+            <th class = "info" id= "{{ item }}">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info" id = "{{ item }}">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S1schedule %}
+        <tr>
+            {% for cell in item %}
+                {% if cell == zone %}
+                     <td id = "{{ cell }}" class="danger">{{ cell }}</td>
+                {% elif forloop.parentloop.first or forloop.first%}
+                      <td id = "{{ cell }}">{{ cell }}</td>               
+                {% elif forloop.counter == 2 %}
+                      <td id = "{{ cell }}">{{ cell }}</td>
+                {% else %}    
+                      <td></td> 
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% elif stage == 2 %}
+    <h2>Eskom is currently implementing stage 2 load shedding</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s2row1">
+            {% for item in headers1 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S2schedule %}
+        <tr>
+            {% for cell in item %}
+            	{% if forloop.parentloop.first or forloop.first  or forloop.counter == 2 %}
+            		<td id="{{ cell }}">{{ cell }}</td>
+            	{% elif zone in cell %}
+            		{% if zone == '1' or zone == '9' %}
+            			{% if '1,9' in cell or '9,1' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '2' or zone == '10' %}
+						{% if '2,10' in cell or '10,2' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '3' or zone == '11' %}
+						{% if '3,11' in cell or '11,3' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '4' or zone == '12' %}
+						{% if '4,12' in cell or '12,4' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '5' or zone == '13' %}
+						{% if '5,13' in cell or '13,5' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '6' or zone == '14' %}
+						{% if '6,14' in cell or '14,6' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}		
+					{% elif zone == '7' or zone == '15' %}
+						{% if '7,15' in cell or '15,7' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '8' or zone == '16' %}
+						{% if '8,16' in cell or '16,8' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}		
+					{% endif %}
+				{% else %}
+					<td id="{{ cell }}"></td>
+            	{% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% elif stage == 3%}
+     <h2>Eskom is currently implementing stage 3 loadshedding</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s3row1">
+            {% for item in headers1 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S3schedule %}
+        <tr>
+            {% for cell in item %}
+				{% if forloop.parentloop.first or forloop.first  or forloop.counter == 2 %}
+            		<td id="{{ cell }}">{{ cell }}</td>
+            	{% elif zone in cell %}
+            		{% if zone == '1' %}
+            			{% if '1,9,13' in cell or '9,1,5' in cell or '5,13,1' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '2' %}
+						{% if '2,10,14' in cell or '10,2,6' in cell or '6,14,2' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '3'%}
+						{% if '3,11,15' in cell or '11,3,7' in cell or '7,15,3' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '4' %}
+						{% if '4,12,16' in cell or '12,4,8' in cell or '8,16,4' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '5'  %}
+						{% if '5,13,1' in cell or '13,5,9' in cell or '9,1,5' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '6'  %}
+						{% if '6,14,2' in cell or '14,6,10' in cell or '10,2,6' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}		
+					{% elif zone == '7'  %}
+						{% if '7,15,3' in cell or '15,7,11' in cell or '11,3,7' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '8' %}
+						{% if '8,16,4' in cell or '16,8,12' in cell or '12,4,8' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '9' %}
+						{% if '9,1,5' in cell or '1,9,13' in cell or '13,5,9' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}		
+					{% elif zone == '10' %}
+						{% if '10,2,6' in cell or '2,10,14' in cell or '14,6,10' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '11' %}
+						{% if '11,3,7' in cell or '3,11,15' in cell or '15,7,11' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '12' %}
+						{% if '12,4,8' in cell or '4,12,16' in cell or '16,8,12' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '13' %}
+						{% if '13,5,9' in cell or '5,13,1' in cell or '1,9,13' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '14' %}
+						{% if '14,6,10' in cell or '6,14,2' in cell or '2,10,14' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '15' %}
+						{% if '15,7,11' in cell or '7,15,3' in cell or '3,11,15' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '16' %}
+						{% if '16,8,12' in cell or '8,16,4' in cell or '4,12,16' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}			
+					{% endif %}
+				{% else %}
+					<td id="{{ cell }}"></td>
+            	{% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% elif stage == 4 %}
+     <h2>Eskom is currently implementing stage 4 loadshedding</h2>
+
+    <div class = "table-responsive">
+        <table class="table table-bordered">
+        <tr id = "s4row1">
+            {% for item in headers1 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for item in headers2 %}
+            <th class = "info">{{ item }}</th>
+            {% endfor %}
+        </tr>
+        {% for item in S4schedule %}
+        <tr>
+            {% for cell in item %}
+				{% if forloop.parentloop.first or forloop.first  or forloop.counter == 2 %}
+            		<td id="{{ cell }}">{{ cell }}</td>
+            	{% elif zone in cell %}
+            		{% if zone == '1' or zone == '5' or zone == '9' or zone == '13' %}
+            			{% if '1,9,13,5' in cell or '9,1,5,13' in cell or '5,13,1,9' in cell or '13,5,9,1' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '2' or zone == '10' or zone == '14' or zone == '6' %}
+						{% if '2,10,14,6' in cell or '10,2,6,14' in cell or '6,14,2,10' in cell or '14,6,10,2' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% elif zone == '3' or zone == '11' or zone == '15' or zone == '7' %}
+						{% if '3,11,15,7' in cell or '11,3,7,15' in cell or '7,15,3,11' in cell or '11,3,7,15' in cell %}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}	
+					{% elif zone == '4' or zone == '12' or zone == '16' or zone == '8' %}
+						{% if '4,12,16,8' in cell or '12,4,8,16' in cell or '8,16,4,12' in cell%}
+							<td id = "{{ cell }}" class="danger">{{ cell }}</td>
+						{% else %}
+							<td></td>
+						{% endif %}
+					{% endif %}
+				{% else %}
+					<td id="{{ cell }}"></td>
+            	{% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% endif %}
+
+{% else %}
+
+<h4> {{ message }}</h4>
+{% endif %}
+
+{% endblock %}

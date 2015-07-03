@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block sched1styles%}
+        <link href="{{ STATIC_URL }}/static/overriding_styles.css" rel="stylesheet"> 
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="page-header">
+        <h1>Loadshedding schedule display method 4</h1>
+    </div>
+</div>
+
+     <div class="col-md-10 col-md-offset-2">
+
+     <h3>Search for or choose your area or zone to see your loadshedding information</h3>
+     <div class="container">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+
+            <form action="/schedule4/search" method="post">
+                                {% csrf_token %}
+                <div class="input-group">
+                    <input id="suburbForm" name="suburbForm" type="text" class="form-control" placeholder="Search for your area...">
+                    <span class="input-group-btn">
+                        <input type="submit" value="search" class="btn btn-default">
+                    </span>
+                </div><!-- /input-group -->
+            </form>
+
+        </div><!-- /.col-lg-6 -->
+
+       <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+    Select a zone or suburb
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/1">1: Bellville</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/2">2: Maitland, Milnerton</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/3">3: Somerset West, Strand</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/4">4: Mitchells Plain, Philippi</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/5">5: Newlands, Parts of Rondebosch, Ottery, Hanover Park</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/6">6: Durbanville, Tygervalley, Welgemoed</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/7">7: City Bowl, Green Point, Sea Point, Camps Bay</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/8">8: Cape Peninsula, Tokai, Muizenberg</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/9">9: Pinelands, Langa, Epping</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/10">10: brackenfell, Kuilsriver, Kraaifontein, Vredekloof</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/11">11: Hout Bay, Constantia, Bergvliet, Plumstead, Wynberg, Claremont</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/12">12: Athlone, Manenberg</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/13">13: Delft, Blue Downs, Goodwood, Parow</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/14">14: Atlantis, Blouberg</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/15">15: Observatory, Rondebosch, Maitland</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="/schedule4/zone/16">16: Retreat, Phillipi</a></li>
+  </ul>
+</div>
+  </div><!-- /.col-lg-6 -->
+
+ </div><!-- /.row -->
+     </div> <!-- container -->
+     <div class='map-container' id='map-canvas'></div>
+
+     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+
+ </div>
+
+<!--  <div class="col-md-10 col-md-offset-2"> -->
+<div class="container">
+ 	{% block results %}
+
+ 	{% endblock %}
+ 	</div>
+
+<!-- 
+ </div> -->
+
+
+{% endblock %}
+
+

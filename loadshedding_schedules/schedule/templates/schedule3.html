@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Loadshedding schedule display method 3</h1>
+    </div>
+    <h3 id="header">Cape Town: Areas 1 - 16 monthly loadshedding schedules</h3>
+    <h4>Effective from 1 February 2015</h4>
+    <h1>{{ current }}</h1>
+
+</div>
+
+<div class="container">
+
+{% if stage == 0 %}
+
+    <h1>Eskom is currently not implementing any loadshedding. Return at a later stage to view the schedules</h1>
+
+    {% endif %}
+
+    {% if stage == 1 %}
+        <h2>Eskom is implementing stage  {{ stage }}  loadshedding</h2>
+        <h3>Currently there is loadshedding in:</h3>
+        <ul>
+            <li>{{ currentZone }}</li>
+        </ul>
+        <h3>The next locations to be loadshed are: </h3>
+        <ul>
+            <li>{{ nextZone }}</li>
+        </ul>
+        <h3>After which there will be loadshedding in: </h3>
+        <ul>
+            <li>{{ afterZone }}</li>
+        </ul>
+    {% endif %}
+
+    {% if stage == 2 %}
+        <h2>Eskom is implementing stage  {{ stage }}  loadshedding</h2>
+        <h3>Currently there is loadshedding in:</h3>
+        <ul>
+            <li>{{ currentFirstZone }}</li>
+            <li> {{ currentSecondZone }}</li>
+        </ul>
+        <h3>The next locations to be loadshed are:</h3>
+        <ul>
+            <li>{{ nextFirstZone }}</li>
+            <li>{{ nextSecondZone }}</li>
+        </ul>
+        <h3>After which there will be loadshedding in: </h3>
+        <ul>
+            <li>{{ afterFirstZone }}</li>
+            <li>{{ afterSecondZone }}</li>
+        </ul>
+    {% endif %}
+
+    {% if stage == 3 %}
+        <h2>Eskom is implementing stage  {{ stage }}  loadshedding</h2>
+        <h3>Currently there is loadshedding in:</h3>
+        <ul>
+            <li>{{ currentFirstZone }}</li>
+            <li> {{ currentSecondZone }}</li>
+            <li>{{ currentThirdZone }}</li>
+        </ul>
+        <h3>The next locations to be loadshed are:</h3>
+        <ul>
+            <li>{{ nextFirstZone }}</li>
+            <li>{{ nextSecondZone }}</li>
+            <li>{{ nextThirdZone }}</li>
+        </ul>
+        <h3>After which there will be loadshedding in:</h3>
+        <ul>
+            <li>{{ afterFirstZone }}</li>
+            <li>{{ afterSecondZone }}</li>
+            <li>{{ afterThirdZone }}</li>
+        </ul>
+    {% endif %}
+
+    {% if stage == 4 %}
+        <h2>Eskom is implementing stage  {{ stage }}  loadshedding</h2>
+        <h3>Currently there is loadshedding in:</h3>
+        <ul>
+            <li>{{ currentFirstZone }}</li>
+            <li>{{ currentSecondZone }}</li>
+            <li>{{ currentThirdZone }}</li>
+            <li>{{ currentFourthZone }}</li>
+        </ul>
+        <h3>The next locations to be loadshed are:</h3>
+        <ul>
+            <li>{{ nextFirstZone }}</li>
+            <li> {{ nextSecondZone }}</li>
+            <li>{{ nextThirdZone  }}</li>
+            <li>{{ nextFourthZone }}</li>
+        </ul>
+        <h3>After which there will be loadshedding in:</h3>
+        <ul>
+            <li>{{ afterFirstZone }}</li>
+            <li>{{ afterSecondZone }}</li>
+            <li>{{ afterThirdZone }}</li>
+            <li>{{afterFourthZone }}</li>
+        </ul>
+    {% endif %}
+
+</div> <!-- container -->
+
+{% endblock %}
+
+
+
